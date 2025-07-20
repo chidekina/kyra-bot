@@ -16,7 +16,8 @@ pyinstaller --onefile --console ..\app\core\monitor.py
 
 REM Agenda a tarefa do monitor para rodar diariamente às 10h
 echo Agendando tarefa do monitor...
-schtasks /create /tn "ClearwaveEnvio" /tr "python C:\Clearwave\app\core\monitor.py" /sc daily /st 10:00
+set MONITOR_EXE=%~dp0dist\monitor.exe
+schtasks /create /tn "ClearwaveEnvio" /tr "%MONITOR_EXE%" /sc daily /st 10:00
 
 REM Mensagem final
 echo Executáveis gerados na pasta dist\

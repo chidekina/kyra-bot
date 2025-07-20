@@ -19,7 +19,7 @@ def configure_api_url(api_url, config_path="config.txt"):
     with open(config_path, "w", encoding="utf-8") as f:
         f.writelines(lines)
 import requests
-from app.core.api_client import excel_to_json, csv_to_json
+from api_client import excel_to_json, csv_to_json
 
 
 class Handler(FileSystemEventHandler):
