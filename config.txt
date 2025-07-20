@@ -1,0 +1,6 @@
+sistema=Windows
+sistema_outro=
+pasta=C:/Users/Hideki/OneDrive/Desktop/teste
+frequencia=Diário
+envio=API
+api_url=http://148.230.73.61:8000/upload-json

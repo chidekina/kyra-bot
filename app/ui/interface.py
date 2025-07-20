@@ -58,8 +58,8 @@ def iniciar():
     ttk.Combobox(root, textvariable=freq_var, values=['Diário', 'Semanal'], state='readonly').pack(fill='x', padx=20)
 
     # Envio
-    tk.Label(root, text='Deseja enviar por e-mail ou API?').pack(anchor='w', padx=20, pady=(15,0))
-    ttk.Combobox(root, textvariable=envio_var, values=['E-mail', 'API'], state='readonly').pack(fill='x', padx=20)
+    tk.Label(root, text='Envio via API').pack(anchor='w', padx=20, pady=(15,0))
+    ttk.Combobox(root, textvariable=envio_var, values=['API'], state='readonly').pack(fill='x', padx=20)
 
     tk.Button(root, text='Salvar configuração', command=salvar_config).pack(pady=20)
 

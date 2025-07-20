@@ -23,7 +23,7 @@ class Handler(FileSystemEventHandler):
             return
         if event.src_path.endswith(('.xlsx', '.csv')):
             self.chat_callback(f"Novo relatório detectado: {event.src_path}")
-            # Aqui pode chamar envio por API/e-mail
+            # Aqui pode chamar envio por API
 
 class MonitorThread(threading.Thread):
     def __init__(self, pasta, chat_callback):
@@ -86,16 +86,16 @@ class App:
             return
         if not user_config['envio']:
             user_config['envio'] = texto
-            self.chat_append('Se for API, informe o endpoint. Se for e-mail, digite "ok".')
+            self.chat_append('Informe o endpoint da API.')
             return
         envio = user_config['envio'].lower()
-        # Aceita "email" ou "e-mail" para iniciar monitoramento
+        # Aceita apenas API para iniciar monitoramento
         if envio == 'api' and not user_config['api_url']:
             user_config['api_url'] = texto
             self.chat_append('Configuração concluída! Monitoramento iniciado.')
             self.iniciar_monitoramento()
             return
-        if envio in ['e-mail', 'email']:
+        if envio == 'API':
             self.chat_append('Configuração concluída! Monitoramento iniciado.')
             self.iniciar_monitoramento()
             return
@@ -105,7 +105,7 @@ class App:
         if pasta:
             user_config['pasta'] = pasta
             self.chat_append(f'Pasta selecionada: {pasta}')
-            self.chat_append('Deseja enviar por e-mail ou API?')
+            self.chat_append('Deseja enviar por API?')
             self.btn.config(state='normal')
     def iniciar_monitoramento(self):
         self.monitor_thread = MonitorThread(user_config['pasta'], self.chat_append)
